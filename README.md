@@ -1,3 +1,15 @@
+# Pour docker spécifiquement
+
+Toutes les modifications sont dans ./contrib/docker. Le build se fera donc de la façon suivante :
+```bash
+docker build -t stubby -f ./contrib/docker/Dockerfile ./
+```
+
+Le build tel qu'il est actuellement est fonctionel mais non-optimal. Il manque notamment la
+sélection précise des suites cryptographiques (AES256-SHA384 et CHACHA20-POLY1305 désirées). Je n'ai
+pas encore beaucoup testé donc il est possible que des problèmes affectant l'usabilité soient
+toujours présents.
+
 # About Stubby
 
 Stubby is an application that acts as a local **DNS Privacy stub resolver** (using DNS-over-TLS). Stubby encrypts DNS queries sent 
