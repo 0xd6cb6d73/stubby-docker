@@ -53,7 +53,7 @@ COPY --from=builder /usr/src/stubby/stubby.yml /usr/local/etc/stubby/stubby.yml
 #    /usr/local/etc/stubby/stubby.yml
 
 # Copy stubby.ymy from build directory instead
-COPY ./contrib/docker/stubby.yml /usr/local/etc/stubby/stubby.yml
+COPY ./stubby.yml /usr/local/etc/stubby/stubby.yml
 RUN mkdir -p /var/cache/stubby
 
 LABEL version="1.3"
