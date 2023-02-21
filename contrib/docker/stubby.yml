@@ -118,8 +118,6 @@ idle_timeout: 10000
 # Set the acceptable cipher for DNS over TLS1.3. OpenSSL >= 1.1.1 is required
 # for this option. This option can also be given per upstream.
 # (default as shown)
-# Il ne semble pas possible de préciser ces suites cryptographiques avec la version 1.1.1n d'openSSL
-# telle qu'incluse dans debian:bullseye.
 #tls_ciphersuites: "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256"
 
 # Set the minimum acceptable TLS version. Works with OpenSSL >= 1.1.1 only.
@@ -136,8 +134,8 @@ tls_max_version: GETDNS_TLS1_3
 # specify a different port. (Note that due to restrictions within the config
 # file parser, IPv6 address cannot start with `::` )
 listen_addresses:
-  - 0.0.0.0
-    #- 0::1
+  - 0.0.0.0@8053
+  - 0::1@8053
 
 ############################### DNSSEC SETTINGS ################################
 # Require DNSSEC validation. This will withhold answers with BOGUS DNSSEC
