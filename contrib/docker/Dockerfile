@@ -41,6 +41,8 @@ RUN \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/
 
+ENV TZ='Europe/Paris'
+
 COPY --from=builder /usr/src/stubby /usr/local/bin
 COPY --from=builder /usr/src/stubby/stubby.yml /usr/local/etc/stubby/stubby.yml
 
@@ -52,11 +54,11 @@ COPY --from=builder /usr/src/stubby/stubby.yml /usr/local/etc/stubby/stubby.yml
 #RUN grep --before-context 1 --after-context 3 '^  - 0.0.0.0$' \
 #    /usr/local/etc/stubby/stubby.yml
 
-# Copy stubby.ymy from build directory instead
+# Copy stubby.yml from build directory instead
 COPY ./contrib/docker/stubby.yml /usr/local/etc/stubby/stubby.yml
 RUN mkdir -p /var/cache/stubby
 
-LABEL version="1.3"
+LABEL version="1.4"
 # Notice: since program is not catching TERM signal, it will be forcefully
 # killed by Docker runtime on stop after timeout (see issue #188).
 ENTRYPOINT [ "stubby" ]
